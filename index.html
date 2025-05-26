@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>World Explorer</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+</head>
+<body>
+  <div id="homePage">
+    <header>
+      <h1 id="animatedTitle">World Explorer</h1>
+      <h2>Search a Country</h2>
+    </header>
+    <input type="text" id="searchInput" placeholder="Type a country name..." />
+    <div id="map" style="height: 400px;"></div>
+    <div class="icons">
+      <img src="compass.png" alt="Compass Icon" />
+      <img src="passport.png" alt="Passport Icon" />
+      <img src="plane.png" alt="Plane Icon" />
+    </div>
+  </div>
+
+  <div id="countryPage" style="display: none;">
+    <button id="backToMap">Back to Map</button>
+    <div class="card-grid">
+      <div class="card" id="passportCard"></div>
+      <div class="card" id="populationCard"></div>
+      <div class="card" id="foodCard"></div>
+      <div class="card" id="landmarkCard"></div>
+      <div class="card" id="funFactCard"></div>
+      <div class="card" id="miniMap"></div>
+    </div>
+    <button id="nextCountry">Next Country</button>
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
