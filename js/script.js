@@ -35,6 +35,25 @@ $(document).ready(function () {
       latlng: [46.6034, 1.8883]
     }
     // Add more countries here
+  {
+    name: 'England', 
+    capital: 'London',
+    population: '57.7M',
+    food: 'Fish and Chips',
+    landmark: 'Buckingham Palace',
+    fact: 'The largest of the four constituent countries of the UK',
+    latlng: [52.3555, 1.1743]
+  },
+  {
+    name: 'Spain',
+    capital: 'Madrid',
+    population: '48.3M',
+    food: 'Paella',
+    landmark: 'La Sagrada Familia',
+    fact: 'It occupies most of the Iberian Peninsula',
+    latlng: [ 40.4637, 3,7492]
+  }
+  // Add more countries here
   ];
 
   function displayCountry(country) {
