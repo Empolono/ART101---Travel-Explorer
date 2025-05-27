@@ -22,6 +22,7 @@ $(document).ready(function () {
     $('#foodCard').html(`<h3>Famous Food</h3><p>${country.food}</p>`);
     $('#landmarkCard').html(`<h3>Landmark</h3><p>${country.landmark}</p>`);
     $('#funFactCard').html(`<h3>Fun Fact</h3><p>${country.fact}</p>`);
+    $('#regionCard').html(`<h3>Region</h3><p>${country.region}</p>`);
 
     // Destroy any existing mini map before creating a new one
     if (window.miniMapInstance) window.miniMapInstance.remove();
@@ -65,6 +66,60 @@ $(document).ready(function () {
     try {
       const response = await fetch('https://restcountries.com/v3.1/all');
       const data = await response.json();
+      const funFact = {
+        "Afghanistan": "Afghanistan is home to one of the world's oldest oil paintings, found in the Bamiyan Caves.",
+        "Algeria": "Algeria is the largest country in Africa by land area.",
+        "Argentina": "Argentina is the birthplace of the tango dance.",
+        "Australia": "Australia is home to more kangaroos than people.",
+        "Bangladesh": "Bangladesh has the world's largest river delta: the Sundarbans, also home to Bengal tigers.",
+        "Belgium": "Belgium is known for inventing fries (yes, 'French' fries!).",
+        "Brazil": "Brazil is the only country in South America that speaks Portuguese.",
+        "Canada": "Canada has more lakes than the rest of the world combined.",
+        "Chile": "Chile is home to the world's driest desert, the Atacama.",
+        "China": "China invented paper, printing, gunpowder, and the compass—called the Four Great Inventions.",
+        "Colombia": "Colombia is one of the most biodiverse countries in the world.",
+        "Czechia": "Czechia (Czech Republic) has the most castles per square mile in Europe.",
+        "Denmark": "Denmark is consistently ranked one of the happiest countries in the world.",
+        "Dominican Republic": "The Dominican Republic was the site of the first European settlement in the Americas.",
+        "Egypt": "Ancient Egypt was among the first civilizations to use writing—hieroglyphics.",
+        "Ethiopia": "Ethiopia is the only African country never to be colonized.",
+        "Finland": "Finland has more saunas than cars!",
+        "France": "France is the most visited country in the world.",
+        "Germany": "Germany is home to over 1,500 varieties of sausages.",
+        "Ghana": "Ghana was the first African country to gain independence from colonial rule in 1957.",
+        "Greece": "Greece is considered the cradle of Western civilization and democracy.",
+        "Hungary": "Hungary has a spa culture, with over 1,000 hot springs across the country.",
+        "India": "India is the world's largest producer of films—Bollywood makes over 1,000 movies a year.",
+        "Indonesia": "Indonesia has over 17,000 islands—only about 6,000 are inhabited.",
+        "Iran": "Iran is home to one of the world's oldest civilizations, with cities dating back thousands of years.",
+        "Iraq": "Iraq is the site of ancient Mesopotamia, known as the cradle of civilization.",
+        "Ireland": "Ireland has no native snakes—thanks to legend, St. Patrick chased them away.",
+        "Israel": "Israel has the most startups per capita in the world.",
+        "Italy": "Italy has more UNESCO World Heritage Sites than any other country.",
+        "Japan": "Japan has a 'crying sumo' contest where wrestlers try to make babies cry for good luck.",
+        "Kenya": "Kenya is famous for its long-distance runners, many of whom come from the Rift Valley.",
+        "Malaysia": "Malaysia has the world's largest cave chamber—Sarawak Chamber in Borneo.",
+        "Mexico": "Mexico introduced chocolate, chilies, and corn to the world.",
+        "Morocco": "Morocco is home to the world's oldest university—University of al-Qarawiyyin in Fez.",
+        "Netherlands": "About a quarter of the Netherlands lies below sea level.",
+        "New Zealand": "New Zealand has more sheep than people—about 5 to 1.",
+        "Nigeria": "Nigeria is the most populous country in Africa and has a booming film industry called Nollywood.",
+        "Norway": "Norway introduced the world to the paperclip!",
+        "Pakistan": "Pakistan is home to the world's second-highest mountain—K2.",
+        "Peru": "Peru is home to Machu Picchu, an ancient Incan city hidden in the Andes.",
+        "Philippines": "The Philippines is made up of over 7,000 islands.",
+        "Poland": "Poland is home to the world's biggest castle—Malbork Castle.",
+        "Portugal": "Portugal is the oldest country in Europe with the same defined borders since 1139.",
+        "Russia": "Russia is the largest country in the world by land area.",
+        "Saudi Arabia": "Saudi Arabia has no rivers—none at all!",
+        "South Africa": "South Africa has three capital cities: Pretoria, Cape Town, and Bloemfontein.",
+        "South Korea": "South Korea is a global leader in internet speed and tech innovation.",
+        "Spain": "Spain produces over 40% of the world's olive oil.",
+        "Sweden": "Sweden gives each citizen access to a public 'right to roam' in nature—called 'Allemansrätten'.",
+        "Thailand": "Thailand is home to the world's smallest mammal: the bumblebee bat.",
+        "United States": "The U.S. has no official language at the federal level—even though English is the most spoken."
+      };
+
       const foodMap = {
         "Afghanistan": "Kabuli Pulao",
         "Algeria": "Couscous",
@@ -182,7 +237,8 @@ $(document).ready(function () {
           population: (c.population / 1_000_000).toFixed(1) + 'M',
           food: foodMap[name] || 'Unknown Cuisine',
           landmark: landmarkMap[name] || 'Famous Landmark',
-          fact: `Region: ${c.region}`,
+          region: `${c.region}`,
+          fact: funFact[name] || '',
           latlng: c.latlng || [0, 0],
           flag: c.flags?.png || ''
         };
