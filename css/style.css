@@ -5,6 +5,14 @@ body {
   background: linear-gradient(to top, #e0f7fa, #ffffff);
 }
 
+.country-card {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  max-width: 400px;
+}
+
 header {
   text-align: center;
   padding: 1rem;
