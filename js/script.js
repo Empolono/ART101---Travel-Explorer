@@ -64,7 +64,7 @@ $(document).ready(function () {
   // Fetch countries from REST Countries API
   async function loadCountries() {
     try {
-      const response = await fetch('https://restcountries.com/v3.1/all');
+      const response = await fetch('https://restcountries.com/v3.1/all?fields=name,capital,population,region,latlng,flags');
       const data = await response.json();
       const funFact = {
         "Afghanistan": "Afghanistan is home to one of the world's oldest oil paintings, found in the Bamiyan Caves.",
