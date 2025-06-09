@@ -656,19 +656,33 @@ $(document).ready(function () {
 
       // map to custom structure
       countryData = data.map(c => {
-        const name = c.name.common; // define name first
+        const name = c.name.common;
+      
+        // Format population dynamically
+        let formattedPopulation;
+        if (c.population >= 1_000_000_000) {
+          formattedPopulation = (c.population / 1_000_000_000).toFixed(1) + 'B';
+        } else if (c.population >= 1_000_000) {
+          formattedPopulation = (c.population / 1_000_000).toFixed(1) + 'M';
+        } else if (c.population >= 1_000) {
+          formattedPopulation = (c.population / 1_000).toFixed(1) + 'K';
+        } else {
+          formattedPopulation = c.population.toString(); // just show the number
+        }
+      
         return {
           name,
           capital: c.capital ? c.capital[0] : 'N/A',
-          population: (c.population / 1_000_000).toFixed(1) + 'M',
+          population: formattedPopulation,
           food: foodMap[name] || 'Unknown Cuisine',
-          landmark: landmarkMap[name] || 'Famous Landmark',
+          landmark: landmarkMap[name] || 'Unknown Landmark',
           region: `${c.region}`,
-          fact: funFact[name] || '',
+          fact: funFact[name] || 'Unknown Fun Fact',
           latlng: c.latlng || [0, 0],
           flag: c.flags?.png || ''
         };
       });
+
       
       setupEventHandlers(); // set up buttons/ search after data loads
     } catch (err) {
